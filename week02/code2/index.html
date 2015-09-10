@@ -30,9 +30,11 @@
    uniform vec3  uCursor;
    varying vec3  vPosition;
    void main() {
-   	float scale = 5.0*uTime;
-   	vec3 color = vec3(sin(vPosition.x*scale)*uCursor.x,cos(vPosition.y*scale)*uCursor.y,tan(vPosition.x*vPosition.y*scale*uCursor.x*uCursor.y));
-      gl_FragColor = vec4(color, 1.);
+   //normalize(uCursor);
+   //normalize(vPosition);
+   float brightness = dot(vec2(2.0*uCursor.x-vPosition.x,2.0*uCursor.y-vPosition.y),vPosition.xy);
+   vec3 color = vec3(brightness*sin(uCursor.x),brightness*sin(uCursor.y),brightness*sin(uCursor.x*uCursor.y));
+   gl_FragColor = vec4(color, 1.);
    }
 </script>
 

@@ -1,0 +1,29 @@
+WebGL and OpenGL - Right hand rule
+GPU only deals with triangles
+
+from frag shader : "void main(void){...}" -- why does the function take a void argument?
+
+vectors will be referred to as column vector (objects)
+
+bottle neck created when cpu sends verticies to gpu. Triangle strips minimize number of verticies to be sent. glsl knows to interpret verticies.
+
+if type='other' in html in <script> tag, the script won't be evaluated
+
+hw is to play with frag shader...
+
+uniform - variables that don't change over space. passed in from cpu
+attribute - handed in from cpu, unique for each vertext
+varying - created in vert shader and output.  passed from vert to frag.
+
+js - don't put methods in constructor of objects. add to prototype so they don't get called every time a new instance is made.
+
+lib js - //Assign attribute aPosition... <-go over this function ???
+
+swizzling:
+	take a vec3 and refer to vec3.x or vec3.xy or vec3.xx to get components
+
+dot product - how much vectors line up (two vecs at 90deg will yield 0)
+
+
+
+

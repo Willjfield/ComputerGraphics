@@ -1,0 +1,43 @@
+<script src=lib1.js></script>
+<center>
+<canvas id='canvas1' width='640' height='640'></canvas>
+</center>
+<script id='my_vertex_shader' type='x-shader/x-vertex'>
+   attribute vec3 aPosition;
+   varying   vec3 vPosition;
+   void main() {
+      gl_Position = vec4(aPosition, 1.0);
+      vPosition = aPosition;
+   }
+</script>
+
+<!!==========================================================================
+
+   Below is the fragment shader from class (with some slight improvements).
+
+   Your assignment is to write your own interesting fragment shader program.
+   Try to have fun with it -- use "uTime" to create animated patterns, and
+   "uCursor" to make it responsive to a user's mouse gestures.
+
+   Try to make something as completely different from my "easter egg" example
+   as possible :-)
+
+============================================================================>
+
+<script id='my_fragment_shader' type='x-shader/x-fragment'>
+   precision mediump float;
+   uniform float uTime;
+   uniform vec3  uCursor;
+   varying vec3  vPosition;
+   void main() {
+   	float scale = 5.0*uTime;
+   	vec3 color = vec3(sin(vPosition.x*scale)*uCursor.x,cos(vPosition.y*scale)*uCursor.y,tan(vPosition.x*vPosition.y*scale*uCursor.x*uCursor.y));
+      gl_FragColor = vec4(color, 1.);
+   }
+</script>
+
+<script>
+start_gl('canvas1', document.getElementById('my_vertex_shader'  ).innerHTML,
+                    document.getElementById('my_fragment_shader').innerHTML);
+</script>
+

@@ -1,0 +1,23 @@
+Gamma Correction
+	We don't preceive luminence linearly. It's actually closer to log
+	We preceive more variation in dark shades than light shades
+	To account for this in frag shaders (roughly) color<-pow(color,0.45)
+	On 0-255 rgb scale, 128 does not represent (lum at 255)/2. More like pow(lum at 128,2.2).
+	color = pow(color,vec3(.45,.45,.45)) at the very end
+	This is done manually because GPU/GLSL can do all sorts of non-graphics stuff that doesn't need it
+
+Ray Tracing 
+	Ray tracing sort of works backwards. You follow light back to its source from the camera
+	"unit length" = normalized
+	Ray Casting from Camera
+		vec3 W = normalize(vec3(x,y,-f)) - where W is the direction of the ray, (x,y) is a screen coordinate, f is focal length
+	GPU is optimized for float, vec2, vec3, vec4
+	To access items in a vector, glsl wants to see v=vec4(...) v.x,v.y,v.z,v.w OR v.r,v.g,v.b,v.a
+Physics of highlights (specular) in different materials work completely differently???
+Compiled Frag shaders don't actually use loops
+	for loops are actually sent out as separate blocks of code. there are no while loops. for condition MUST be const. not var.
+GPUs are actually increasing in speed faster than moore's law
+GPUs are not efficient at getting input and output
+Homework
+	See site
+	

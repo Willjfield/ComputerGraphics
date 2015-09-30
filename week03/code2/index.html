@@ -77,19 +77,19 @@
       // USING vPosition.x AND vPosition.y.
 
       vec3 V, W;
-      V = vec3(0.,0.,-1.);
-      W = normalize(vec3(vPosition.x,vPosition.y,-.3));
+      V = vec3(0.,0.,-2.);
+      W = normalize(vec3(vPosition.x,vPosition.y,-3.));
 
       // YOU NEED TO SET x,y,z AND r FOR sphere.
  
 
       
-	  sphere=vec4(0.,0.,-10.,5.);	
+	  sphere=vec4(2.*cos(uTime),2.*sin(uTime),-10.,5.);	
       // YOU NEED TO SET r,g,b FOR material.
 	  material.rgb = vec3(.5,1.,1.);
       vec3 color = vec3(0., 0., 0.);
       float t = raySphere(V, W, sphere);
-      if (t > 0.)
+      if (t > 0. && t<5.)
          color = shadeSphere(V + t * W, sphere, material);
 
       color = pow(color, vec3(.45,.45,.45)); // Do Gamma correction.
